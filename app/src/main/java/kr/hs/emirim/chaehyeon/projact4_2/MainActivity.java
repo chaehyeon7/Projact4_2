@@ -1,5 +1,4 @@
 package kr.hs.emirim.chaehyeon.projact4_2;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkStart = findViewById(R.id.start);
+        checkStart = findViewById(R.id.check_start);
         linear = findViewById(R.id.linear);
         rg = findViewById(R.id.rg);
         imgv = findViewById(R.id.imgv);
         Button btnDone = findViewById(R.id.btn_done);
 
         checkStart.setOnCheckedChangeListener(checkListener);
-
+        btnDone.setOnClickListener(btnListener);
     }
 
     CompoundButton.OnCheckedChangeListener checkListener = new CompoundButton.OnCheckedChangeListener() {
@@ -41,5 +40,21 @@ public class MainActivity extends AppCompatActivity {
                 linear.setVisibility(View.INVISIBLE);
             }
         }
-    }
+    };
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(rg.getCheckedRadioButtonId()){
+                case R.id.radio_dog:
+                    imgv.setImageResource(R.drawable.dog);
+                    break;
+                case R.id.radio_cat:
+                    imgv.setImageResource(R.drawable.cat);
+                    break;
+                case R.id.radio_rabbit:
+                    imgv.setImageResource(R.drawable.rabbit);
+                    break;
+            }
+        }
+    };
 }
