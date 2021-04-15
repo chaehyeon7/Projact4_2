@@ -28,10 +28,31 @@ public class MainActivity extends AppCompatActivity {
         linear = findViewById(R.id.linear);
         rg = findViewById(R.id.rg);
         imgv = findViewById(R.id.imgv);
+        Button btnFinish = findViewById(R.id.btn_finsich);
+        Button btnFirst = findViewById(R.id.btn_first);
+
+        btnFinish.setOnClickListener(btnListener);
+        btnFinish.setOnClickListener(btnListener);
+
 
         switchStart.setOnCheckedChangeListener(checkListener);
         rg.setOnCheckedChangeListener(rgListener);
     }
+
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.btn_finsich:
+                    finish();
+                    break;
+                case R.id.btn_first:
+                    linear.setVisibility(View.INVISIBLE);
+                    switchStart.setChecked(false);
+                    break;
+            }
+        }
+    };
 
     CompoundButton.OnCheckedChangeListener checkListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
